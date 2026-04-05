@@ -26,54 +26,13 @@
         h1 { font-size: 3.2rem; margin: 10px 0; text-shadow: 3px 3px 12px rgba(0,0,0,0.9); }
         .tagline { font-size: 1.7rem; font-weight: bold; color: var(--gold); }
 
-        .logo:hover { 
-            transform: scale(1.1); 
-            transition: all 0.3s ease; 
-            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-            border: 10px solid var(--gold);
-        }
-        nav { 
-            background: var(--primary); 
-            padding: 16px 0; 
-            position: sticky; 
-            top: 0; 
-            z-index: 1000; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2); 
-        }
-        .nav-container { 
-            max-width: 1200px; 
-            margin: 0 auto; 
-            padding: 0 20px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between; 
-        }
-        .nav-links { 
-            display: flex; 
-            gap: 15px; 
-            flex-wrap: wrap; 
-        }
-        nav a { 
-            color: white; 
-            text-decoration: none; 
-            font-weight: 600; 
-            padding: 10px 18px; 
-            border-radius: 6px; 
-            transition: all 0.3s; 
-        }
-        nav a:hover, nav a.active { 
-            background: rgba(255,255,255,0.25); 
-            color: var(--gold); 
-        }
-        .hamburger { 
-            display: none; 
-            background: none; 
-            border: none; 
-            font-size: 2.1rem; 
-            color: white; 
-            cursor: pointer; 
-            padding: 8px; 
-        }
+        nav { background: var(--primary); padding: 16px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; }
+        .nav-links { display: flex; gap: 15px; flex-wrap: wrap; }
+        nav a { color: white; text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 6px; transition: all 0.3s; }
+        nav a:hover, nav a.active { background: rgba(255,255,255,0.25); color: var(--gold); }
+
+        .hamburger { display: none; background: none; border: none; font-size: 2.1rem; color: white; cursor: pointer; padding: 8px; }
 
         @media (max-width: 768px) {
             .nav-links { 
@@ -90,11 +49,12 @@
             }
             .nav-links.active { display: flex; animation: slideDown 0.4s ease forwards; }
             .hamburger { display: block; }
-            ul { columns: 1 !important; }
-            .section { padding: 30px 20px; }
         }
 
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideDown { 
+            from { opacity: 0; transform: translateY(-20px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
 
         .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
         .section { 
@@ -107,11 +67,25 @@
         h2 { color: var(--primary); border-bottom: 4px solid var(--gold); padding-bottom: 12px; }
         #search { width: 100%; padding: 16px; font-size: 1.15rem; border: 3px solid var(--gold); border-radius: 10px; margin-bottom: 25px; outline: none; }
         #search:focus { border-color: var(--primary); }
-        ul { list-style: none; padding: 0; columns: 2; gap: 30px; }
+
+        /* Responsive Columns for Positions List */
+        ul { 
+            list-style: none; 
+            padding: 0; 
+            columns: 2; 
+            gap: 30px; 
+        }
+        @media (max-width: 768px) {
+            ul { columns: 1; }
+        }
+
         li { 
-            padding: 14px 18px; border-bottom: 1px solid #eee; 
-            font-size: 1.15rem; cursor: pointer; 
-            transition: all 0.3s ease; border-radius: 8px; 
+            padding: 14px 18px; 
+            border-bottom: 1px solid #eee; 
+            font-size: 1.15rem; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            border-radius: 8px; 
         }
         li:hover { background: #fff3e0; transform: translateX(8px); }
 
@@ -144,36 +118,33 @@
             cursor: pointer; color: var(--primary); 
         }
 
-        /* Centered Footer */
         footer { 
             background: var(--dark); 
             color: #ddd; 
             text-align: center; 
-            padding: 50px 20px; 
+            padding: 60px 20px 40px; 
         }
-        .footer-contacts { 
-            display: flex; 
-            flex-direction: column; 
-            gap: 12px; 
-            margin: 20px 0;
-            font-size: medium; 
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto 40px;
         }
-        .whatsapp-link { 
-            display: inline-flex; 
-            align-items: center; 
-            gap: 10px; 
-            color: #25D366; 
-            text-decoration: none; 
-            font-weight: 600; 
-            padding: 8px 16px; 
-            border-radius: 8px; 
-            background: rgba(37, 211, 102, 0.1); 
-            transition: all 0.3s; 
+        .contact-card {
+            background: rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
         }
-        .whatsapp-link:hover { 
-            background: rgba(37, 211, 102, 0.2); 
-            transform: translateY(-2px); 
+        .contact-card:hover { background: rgba(255,215,0,0.1); transform: translateY(-5px); }
+        .contact-card a {
+            display: flex; align-items: center; gap: 12px;
+            color: #25D366; text-decoration: none; font-weight: 600;
+            padding: 12px 16px; border-radius: 8px;
+            background: rgba(37, 211, 102, 0.15);
         }
+        .contact-card a:hover { background: rgba(37, 211, 102, 0.3); }
     </style>
 </head>
 <body>
@@ -200,12 +171,12 @@
     <div class="container">
 
         <div class="section" id="positions">
-            <h2>Available Positions (21)</h2>
+            <h2>Available Positions (29)</h2>
             <input type="text" id="search" placeholder="🔍 Search positions..." aria-label="Search positions">
 
             <div class="highlight">
                 <strong>Applications are open to ALL interested students</strong> (Baganda and non-Baganda).<br>
-                Faculty Representatives ensure every faculty has a direct voice in the cabinet.
+                Faculty and Hall Representatives ensure better representation.
             </div>
 
             <ul id="position-list">
@@ -216,19 +187,28 @@
                 <li data-title="Secretary (Omuwandiisi)" data-desc="Responsible for keeping accurate records, minutes, correspondence, and official documentation of the association.">5. Secretary (Omuwandiisi)</li>
                 <li data-title="Deputy Secretary (Amyuka Omuwandiisi)" data-desc="Supports the Secretary in documentation and administrative tasks.">6. Deputy Secretary (Amyuka Omuwandiisi)</li>
                 <li data-title="Treasurer (Omuwanika)" data-desc="Manages all financial matters, prepares budgets, collects dues, and ensures transparency in all financial reports.">7. Treasurer (Omuwanika)</li>
-                <li data-title="Information Minister (Ow'amawulire)" data-desc="Handles communication, publicity, social media, and keeps members informed about association activities.">8. Information Minister (Ow'amawulire)</li>
-                <li data-title="Deputy Information Minister (Amyuka Ow'amawulire)" data-desc="Assists with media, announcements, and public relations efforts.">9. Deputy Information Minister (Amyuka Ow'amawulire)</li>
-                <li data-title="Ssenga" data-desc="Provides cultural and moral guidance on family values, etiquette, and traditional Baganda roles for female students.">10. Ssenga</li>
-                <li data-title="Kkojja" data-desc="Offers paternal cultural mentorship and guidance on Baganda customs and traditions for male students.">11. Kkojja</li>
-                <li data-title="Minister of Foreign Affairs (Omutabaganya w'Amawangwa)" data-desc="Builds partnerships with other student associations, universities, and external organisations.">12. Minister of Foreign Affairs (Omutabaganya w'Amawangwa)</li>
-                <li data-title="Projects Minister (Ow'ebyenkulaakulana)" data-desc="Initiates, plans, and executes meaningful development and welfare projects for BANKOSA members.">13. Projects Minister (Ow'ebyenkulaakulana)</li>
-                <li data-title="Chief Coordinator (Ssaabakwanaganya w'emirimu)" data-desc="Ensures all cabinet members work together efficiently and that planned activities are successfully executed.">14. Chief Coordinator (Ssaabakwanaganya w'emirimu)</li>
-                <li data-title="Principal Legal Advisor (Munnamateeka)" data-desc="Provides legal counsel, ensures all activities comply with university policies, and advises on governance matters.">15. Principal Legal Advisor (Munnamateeka)</li>
-                <li data-title="Chief Mobilizer (Ssaabakunzi)" data-desc="Mobilises students for events, meetings, and increases active participation in BANKOSA activities.">16. Chief Mobilizer (Ssaabakunzi)</li>
-                <li data-title="Minister of Culture (Ow'ebyobuwangwa)" data-desc="Promotes and preserves Baganda language, traditions, music, dance, and cultural heritage among students.">17. Minister of Culture (Ow'ebyobuwangwa)</li>
-                <li data-title="Deputy Minister of Culture (Amyuka Ow'ebyobuwangwa)" data-desc="Supports cultural programs, events, and heritage preservation initiatives.">18. Deputy Minister of Culture (Amyuka Ow'ebyobuwangwa)</li>
-                <li data-title="Games and Sports Minister (Ow'ebyemizannyo)" data-desc="Organises sports tournaments, fitness activities, and promotes physical health and team spirit among members.">19. Games and Sports Minister (Ow'ebyemizannyo)</li>
-                <li data-title="Faculty Representative / Coordinator" data-desc="Acts as the official link between your faculty and the BANKOSA cabinet. You will voice faculty-specific concerns, coordinate faculty-level activities, mobilise students from your faculty, and ensure every faculty is well-represented in association decisions.">20. Faculty Representative / Coordinator (One per Faculty)</li>
+                <li data-title="Deputy Treasurer (Amyuka Omuwanika)" data-desc="Assists the Treasurer in financial management and reporting.">8. Deputy Treasurer (Amyuka Omuwanika)</li>
+                <li data-title="Information Minister (Ow'amawulire)" data-desc="Handles communication, publicity, social media, and keeps members informed about association activities.">9. Information Minister (Ow'amawulire)</li>
+                <li data-title="Deputy Information Minister (Amyuka Ow'amawulire)" data-desc="Assists with media, announcements, and public relations efforts.">10. Deputy Information Minister (Amyuka Ow'amawulire)</li>
+                <li data-title="Ssenga" data-desc="Provides cultural and moral guidance on family values, etiquette, and traditional Baganda roles for female students.">11. Ssenga</li>
+                <li data-title="Amyuka Ssenga (Deputy)" data-desc="Supports the Ssenga in cultural and moral guidance for female students.">12. Amyuka Ssenga (Deputy)</li>
+                <li data-title="Kkojja" data-desc="Offers paternal cultural mentorship and guidance on Baganda customs and traditions for male students.">13. Kkojja</li>
+                <li data-title="Amyuka Kkojja (Deputy)" data-desc="Supports the Kkojja in cultural mentorship for male students.">14. Amyuka Kkojja (Deputy)</li>
+                <li data-title="Ethics Minister (Ow'ebyempisa)" data-desc="Promotes moral values, discipline, and ethical conduct among members.">15. Ethics Minister (Ow'ebyempisa)</li>
+                <li data-title="Deputy Ethics Minister (Amyuka Ow'ebyempisa)" data-desc="Assists in promoting ethics and moral standards.">16. Deputy Ethics Minister (Amyuka Ow'ebyempisa)</li>
+                <li data-title="Legal Advisor (Munnamateeka)" data-desc="Provides legal counsel and ensures compliance with university rules.">17. Legal Advisor (Munnamateeka)</li>
+                <li data-title="Games & Sports Minister (Ow'ebyemizannyo)" data-desc="Organises sports tournaments, fitness activities, and promotes physical health and team spirit.">18. Games & Sports Minister (Ow'ebyemizannyo)</li>
+                <li data-title="Projects Minister (Ow'ebyenkulaakulana)" data-desc="Initiates, plans, and executes meaningful development and welfare projects for BANKOSA members.">19. Projects Minister (Ow'ebyenkulaakulana)</li>
+                <li data-title="Chief Coordinator (Ssaabakwanaganya w'emirimu)" data-desc="Ensures all cabinet members work together efficiently and that planned activities are successfully executed.">20. Chief Coordinator (Ssaabakwanaganya w'emirimu)</li>
+                <li data-title="Minister of Public Relations (Omutabaganya w'Amawangwa)" data-desc="Builds partnerships with other student associations, universities, and external organisations.">21. Minister of Public Relations (Omutabaganya w'Amawangwa)</li>
+                <li data-title="Deputy Minister of Public Relations" data-desc="Assists in building external partnerships and public relations.">22. Deputy Minister of Public Relations</li>
+                <li data-title="Chief Mobilizer (Ssaabakunzi)" data-desc="Mobilises students for events, meetings, and increases active participation in BANKOSA activities.">23. Chief Mobilizer (Ssaabakunzi)</li>
+                <li data-title="Minister of Culture (Ow'ebyobuwangwa)" data-desc="Promotes and preserves Baganda language, traditions, music, dance, and cultural heritage among students.">24. Minister of Culture (Ow'ebyobuwangwa)</li>
+                <li data-title="Deputy Minister of Culture (Amyuka Ow'ebyobuwangwa)" data-desc="Supports cultural programs, events, and heritage preservation initiatives.">25. Deputy Minister of Culture (Amyuka Ow'ebyobuwangwa)</li>
+                <li data-title="Games & Sports Girls" data-desc="Focuses on girls' sports, fitness, and participation in physical activities.">26. Games & Sports Girls</li>
+                <li data-title="Community Services Minister (Owabulungi Bwa Nsi)" data-desc="Organises community service, outreach, and social responsibility projects.">27. Community Services Minister (Owabulungi Bwa Nsi)</li>
+                <li data-title="Faculty Representative / Coordinator" data-desc="Acts as the official link between your faculty and the BANKOSA cabinet.">28. Faculty Representative / Coordinator (Depends on your registered Faculty)</li>
+                <li data-title="Hall / Hostel Representative" data-desc="Represents students in your hall of residence and serves as the bridge between your hall and the BANKOSA cabinet.">29. Hall / Hostel Representative (Depends on your registered Hall of Residence)</li>
             </ul>
         </div>
 
@@ -271,34 +251,38 @@
 
     <a href="#apply" class="floating-btn" aria-label="Go to application form">🚀 Apply Now</a>
 
-<footer>
+    <!-- Enhanced Footer -->
+    <footer>
         <p><strong>BANKOSA Elections 2026</strong></p>
         <p>Uganda Martyrs University - Nkozi</p>
 
-        <h3>Contact the Electoral Team</h3>
+        <h3 style="color:var(--gold); margin:25px 0 15px;">Contact the Electoral Team</h3>
         
         <div class="contact-grid">
             <div class="contact-card">
-                <div class="role">President: <br>Kizito Pius</div>
+                <div class="role">President</div>
                 <a href="https://wa.me/256785267806" target="_blank">
+                    📱 Mr. Kizito Pius<br>
                     <strong>+256 785 267 806</strong>
-                </a> <br>
-            </div><br>
+                </a>
+            </div>
             <div class="contact-card">
-                <div class="role">Speaker: <br> Ssebuufu Paul</div>
+                <div class="role">Speaker</div>
                 <a href="https://wa.me/256783176558" target="_blank">
+                    📱 Ssebuufu Paul<br>
                     <strong>+256 783 176 558</strong>
                 </a>
-            </div> <br>
+            </div>
             <div class="contact-card">
-                <div class="role">Information Minister: <br> Ssemwogerere Ashiraf</div>
+                <div class="role">Information Minister</div>
                 <a href="https://wa.me/256701422100" target="_blank">
+                    📱 Ssemwogerere Ashiraf<br>
                     <strong>+256 701 422 100</strong>
                 </a>
             </div>
         </div>
 
-        <p class="gold" style="margin-top: 30px;">Togetherness is Power! • Obumu Geemaanyi!</p>
+        <p class="gold" style="margin-top: 40px;">Togetherness is Power! • Obumu Geemaanyi!</p>
     </footer>
 
     <script>
@@ -312,7 +296,6 @@
             hamburger.textContent = isOpen ? '✕' : '☰';
         });
 
-        // Close menu on link click
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
@@ -380,3 +363,4 @@
         document.addEventListener('keydown', e => { if (e.key === "Escape") closeModal(); });
     </script>
 </body>
+</html>
