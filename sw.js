@@ -3,8 +3,8 @@ const CACHE_NAME = 'bankosa-pwa-v1';
 const urlsToCache = [
   './',
   './index.html',
-  'https://your-poster-image-url-here.jpg',   // ← Change to your actual poster URL
-  'bankosa logo.jpg'                          // ← Change to your actual logo filename
+  'poster.jpg',
+  'bankosa logo.jpg'
 ];
 
 self.addEventListener('install', event => {
