@@ -9,12 +9,12 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "https://via.placeholder.com/192x192/ffd700/000000?text=BANKOSA",
+      "src": "launchericon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "https://via.placeholder.com/512x512/ffd700/000000?text=BANKOSA",
+      "src": "launchericon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
