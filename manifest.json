@@ -1,0 +1,22 @@
+{
+  "name": "BANKOSA Elections 2026",
+  "short_name": "BANKOSA 2026",
+  "description": "Official election platform for Baganda Nkobazambogo Students Association at Uganda Martyrs University - Nkozi",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#b71c1c",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://via.placeholder.com/192x192/ffd700/000000?text=B",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://via.placeholder.com/512x512/ffd700/000000?text=B",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

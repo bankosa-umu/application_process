@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BANKOSA Elections 2026 - Uganda Martyrs University Nkozi">
+    <meta name="theme-color" content="#b71c1c">
+    <title>BANKOSA Elections 2026 | UMU Nkozi</title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <style>
+        :root { --primary: #b71c1c; --gold: #ffd700; --dark: #1a1a1a; }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin:0; padding:0; background:#f8f9fa; color:#333; line-height:1.6; 
+        }
+        header { 
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://your-poster-image-url-here.jpg'); 
+            background-size: cover; background-position: center; 
+            color: white; text-align: center; padding: 120px 20px 80px; 
+        }
+        .logo { width: 170px; margin-bottom: 15px; }
+        h1 { font-size: 3.2rem; margin: 10px 0; text-shadow: 3px 3px 12px rgba(0,0,0,0.9); }
+        .tagline { font-size: 1.7rem; font-weight: bold; color: var(--gold); }
+
+        .logo:hover { 
+            transform: scale(1.1); 
+            transition: all 0.3s ease; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            border: 10px solid var(--gold);
+        }
+        nav { 
+            background: var(--primary); 
+            padding: 16px 0; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2); 
+        }
+        .nav-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+        }
+        .nav-links { 
+            display: flex; 
+            gap: 15px; 
+            flex-wrap: wrap; 
+        }
+        nav a { 
+            color: white; 
+            text-decoration: none; 
+            font-weight: 600; 
+            padding: 10px 18px; 
+            border-radius: 6px; 
+            transition: all 0.3s; 
+        }
+        nav a:hover, nav a.active { 
+            background: rgba(255,255,255,0.25); 
+            color: var(--gold); 
+        }
+        .hamburger { 
+            display: none; 
+            background: none; 
+            border: none; 
+            font-size: 2.1rem; 
+            color: white; 
+            cursor: pointer; 
+            padding: 8px; 
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { 
+                display: none; 
+                flex-direction: column; 
+                position: absolute; 
+                top: 100%; 
+                left: 0; 
+                width: 100%; 
+                background: var(--primary); 
+                padding: 25px 20px; 
+                box-shadow: 0 10px 25px rgba(0,0,0,0.3); 
+                gap: 10px; 
+            }
+            .nav-links.active { display: flex; animation: slideDown 0.4s ease forwards; }
+            .hamburger { display: block; }
+            ul { columns: 1 !important; }
+            .section { padding: 30px 20px; }
+        }
+
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .section { 
+            background: white; padding: 40px; border-radius: 12px; 
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1); margin-bottom: 40px; 
+            opacity: 0; transform: translateY(30px); 
+            transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1); 
+        }
+        .section.visible { opacity: 1; transform: translateY(0); }
+        h2 { color: var(--primary); border-bottom: 4px solid var(--gold); padding-bottom: 12px; }
+        #search { width: 100%; padding: 16px; font-size: 1.15rem; border: 3px solid var(--gold); border-radius: 10px; margin-bottom: 25px; outline: none; }
+        #search:focus { border-color: var(--primary); }
+        ul { list-style: none; padding: 0; columns: 2; gap: 30px; }
+        li { 
+            padding: 14px 18px; border-bottom: 1px solid #eee; 
+            font-size: 1.15rem; cursor: pointer; 
+            transition: all 0.3s ease; border-radius: 8px; 
+        }
+        li:hover { background: #fff3e0; transform: translateX(8px); }
+
+        .highlight { background: #fff3e0; padding: 25px; border-left: 8px solid var(--primary); margin: 25px 0; font-size: 1.1rem; }
+        .countdown { background: var(--dark); color: var(--gold); padding: 25px; border-radius: 12px; text-align: center; font-size: 1.5rem; margin: 30px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        iframe { width: 100%; height: 950px; border: 3px solid #ddd; border-radius: 12px; }
+
+        .floating-btn { 
+            position: fixed; bottom: 30px; right: 30px; background: var(--primary); color: white;
+            padding: 16px 28px; border-radius: 50px; font-size: 1.15rem; text-decoration: none;
+            box-shadow: 0 6px 20px rgba(183,28,28,0.4); z-index: 1000; transition: all 0.3s;
+        }
+        .floating-btn:hover { transform: scale(1.1); }
+
+        .modal { 
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.75); z-index: 2000; align-items: center; justify-content: center; 
+        }
+        .modal-content { 
+            background: white; max-width: 620px; width: 90%; border-radius: 12px; 
+            padding: 40px 35px; position: relative; animation: modalPop 0.4s ease; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4); 
+        }
+        @keyframes modalPop { 
+            from { transform: scale(0.7) translateY(40px); opacity: 0; } 
+            to { transform: scale(1) translateY(0); opacity: 1; } 
+        }
+        .modal-close { 
+            position: absolute; top: 15px; right: 25px; font-size: 2.4rem; 
+            cursor: pointer; color: var(--primary); 
+        }
+
+        /* Centered Footer */
+        footer { 
+            background: var(--dark); 
+            color: #ddd; 
+            text-align: center; 
+            padding: 50px 20px; 
+        }
+        .footer-contacts { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 12px; 
+            margin: 20px 0;
+            font-size: medium; 
+        }
+        .whatsapp-link { 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 10px; 
+            color: #25D366; 
+            text-decoration: none; 
+            font-weight: 600; 
+            padding: 8px 16px; 
+            border-radius: 8px; 
+            background: rgba(37, 211, 102, 0.1); 
+            transition: all 0.3s; 
+        }
+        .whatsapp-link:hover { 
+            background: rgba(37, 211, 102, 0.2); 
+            transform: translateY(-2px); 
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="bankosa logo.jpg" alt="BANKOSA Logo" class="logo" style="border: 3px solid white; border-radius: 50%; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+        <h1>BANKOSA ELECTIONS 2026</h1>
+        <p class="subtitle">Baganda Nkobazambogo Students Association<br>Uganda Martyrs University - Nkozi</p>
+        <p class="tagline">Obumu Geemaanyi! • Togetherness is Power!</p>
+    </header>
+
+    <nav aria-label="Main navigation">
+        <div class="nav-container">
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">☰</button>
+            <div class="nav-links" id="nav-links" role="menu">
+                <a href="#positions" role="menuitem">Positions</a>
+                <a href="#strategies" role="menuitem">Strategies</a>
+                <a href="#apply" role="menuitem">Apply Now</a>
+                <a href="#countdown" role="menuitem">Deadline</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="section" id="positions">
+            <h2>Available Positions (21)</h2>
+            <input type="text" id="search" placeholder="🔍 Search positions..." aria-label="Search positions">
+
+            <div class="highlight">
+                <strong>Applications are open to ALL interested students</strong> (Baganda and non-Baganda).<br>
+                Faculty Representatives ensure every faculty has a direct voice in the cabinet.
+            </div>
+
+            <ul id="position-list">
+                <li data-title="President (Ssentebe)" data-desc="The overall leader of BANKOSA. You will chair meetings, represent the association at university level, coordinate the entire cabinet, and drive the vision for a stronger, more united Baganda student community.">1. President (Ssentebe)</li>
+                <li data-title="Vice President (Amyuka Ssentebe)" data-desc="Supports the President and steps in during their absence. You will help with leadership, project oversight, and ensuring smooth operations of the cabinet.">2. Vice President (Amyuka Ssentebe)</li>
+                <li data-title="Speaker (Omukubiriza w'Olukiiko)" data-desc="Presides over all general meetings and ensures fair, orderly, and democratic discussions among members.">3. Speaker (Omukubiriza w'Olukiiko)</li>
+                <li data-title="Deputy Speaker (Amyuka Omukubiriza w'Olukiiko)" data-desc="Assists the Speaker and takes charge of meetings when the Speaker is unavailable.">4. Deputy Speaker (Amyuka Omukubiriza w'Olukiiko)</li>
+                <li data-title="Secretary (Omuwandiisi)" data-desc="Responsible for keeping accurate records, minutes, correspondence, and official documentation of the association.">5. Secretary (Omuwandiisi)</li>
+                <li data-title="Deputy Secretary (Amyuka Omuwandiisi)" data-desc="Supports the Secretary in documentation and administrative tasks.">6. Deputy Secretary (Amyuka Omuwandiisi)</li>
+                <li data-title="Treasurer (Omuwanika)" data-desc="Manages all financial matters, prepares budgets, collects dues, and ensures transparency in all financial reports.">7. Treasurer (Omuwanika)</li>
+                <li data-title="Information Minister (Ow'amawulire)" data-desc="Handles communication, publicity, social media, and keeps members informed about association activities.">8. Information Minister (Ow'amawulire)</li>
+                <li data-title="Deputy Information Minister (Amyuka Ow'amawulire)" data-desc="Assists with media, announcements, and public relations efforts.">9. Deputy Information Minister (Amyuka Ow'amawulire)</li>
+                <li data-title="Ssenga" data-desc="Provides cultural and moral guidance on family values, etiquette, and traditional Baganda roles for female students.">10. Ssenga</li>
+                <li data-title="Kkojja" data-desc="Offers paternal cultural mentorship and guidance on Baganda customs and traditions for male students.">11. Kkojja</li>
+                <li data-title="Minister of Foreign Affairs (Omutabaganya w'Amawangwa)" data-desc="Builds partnerships with other student associations, universities, and external organisations.">12. Minister of Foreign Affairs (Omutabaganya w'Amawangwa)</li>
+                <li data-title="Projects Minister (Ow'ebyenkulaakulana)" data-desc="Initiates, plans, and executes meaningful development and welfare projects for BANKOSA members.">13. Projects Minister (Ow'ebyenkulaakulana)</li>
+                <li data-title="Chief Coordinator (Ssaabakwanaganya w'emirimu)" data-desc="Ensures all cabinet members work together efficiently and that planned activities are successfully executed.">14. Chief Coordinator (Ssaabakwanaganya w'emirimu)</li>
+                <li data-title="Principal Legal Advisor (Munnamateeka)" data-desc="Provides legal counsel, ensures all activities comply with university policies, and advises on governance matters.">15. Principal Legal Advisor (Munnamateeka)</li>
+                <li data-title="Chief Mobilizer (Ssaabakunzi)" data-desc="Mobilises students for events, meetings, and increases active participation in BANKOSA activities.">16. Chief Mobilizer (Ssaabakunzi)</li>
+                <li data-title="Minister of Culture (Ow'ebyobuwangwa)" data-desc="Promotes and preserves Baganda language, traditions, music, dance, and cultural heritage among students.">17. Minister of Culture (Ow'ebyobuwangwa)</li>
+                <li data-title="Deputy Minister of Culture (Amyuka Ow'ebyobuwangwa)" data-desc="Supports cultural programs, events, and heritage preservation initiatives.">18. Deputy Minister of Culture (Amyuka Ow'ebyobuwangwa)</li>
+                <li data-title="Games and Sports Minister (Ow'ebyemizannyo)" data-desc="Organises sports tournaments, fitness activities, and promotes physical health and team spirit among members.">19. Games and Sports Minister (Ow'ebyemizannyo)</li>
+                <li data-title="Faculty Representative / Coordinator" data-desc="Acts as the official link between your faculty and the BANKOSA cabinet. You will voice faculty-specific concerns, coordinate faculty-level activities, mobilise students from your faculty, and ensure every faculty is well-represented in association decisions.">20. Faculty Representative / Coordinator (One per Faculty)</li>
+            </ul>
+        </div>
+
+        <div class="section" id="strategies">
+            <h2>Student Election Strategies & Tips</h2>
+            <p>Stand out as a strong candidate with these proven strategies:</p>
+            <ul>
+                <li>✅ Develop a clear, inspiring manifesto focused on unity, welfare, culture, and student empowerment.</li>
+                <li>✅ Engage actively with students through class visits, WhatsApp groups, and campus events.</li>
+                <li>✅ Leverage social media to share your vision and connect personally with voters.</li>
+                <li>✅ Demonstrate teamwork and collaboration — voters love leaders who promote Obumu Geemaanyi.</li>
+                <li>✅ Highlight any previous leadership or organisational experience.</li>
+                <li>✅ Be transparent, respectful, and committed to delivering results within the academic year.</li>
+            </ul>
+        </div>
+
+        <div class="section" id="countdown">
+            <h2>Application Deadline Countdown</h2>
+            <div class="countdown" id="timer">Loading countdown...</div>
+        </div>
+
+        <div class="section" id="apply">
+            <h2>Apply Now</h2>
+            <p>Fill the official Google Form below:</p>
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdTctQFWMRWHpX5vayL3775vOAJhDlzLNh2PekfD1b_HMdxdg/viewform?embedded=true" width="640" height="1434" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            <p style="text-align:center; margin-top:25px; font-size:1.2rem;">
+                <strong>Deadline:</strong> 15 April 2026
+            </p>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="position-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()" aria-label="Close modal">×</span>
+            <h2 id="modal-title"></h2>
+            <div id="modal-desc" style="font-size:1.1rem; line-height:1.8; color:#444;"></div>
+        </div>
+    </div>
+
+    <a href="#apply" class="floating-btn" aria-label="Go to application form">🚀 Apply Now</a>
+
+<footer>
+        <p><strong>BANKOSA Elections 2026</strong></p>
+        <p>Uganda Martyrs University - Nkozi</p>
+
+        <h3>Contact the Electoral Team</h3>
+        
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="role">President: <br>Kizito Pius</div>
+                <a href="https://wa.me/256785267806" target="_blank">
+                    <strong>+256 785 267 806</strong>
+                </a> <br>
+            </div><br>
+            <div class="contact-card">
+                <div class="role">Speaker: <br> Ssebuufu Paul</div>
+                <a href="https://wa.me/256783176558" target="_blank">
+                    <strong>+256 783 176 558</strong>
+                </a>
+            </div> <br>
+            <div class="contact-card">
+                <div class="role">Information Minister: <br> Ssemwogerere Ashiraf</div>
+                <a href="https://wa.me/256701422100" target="_blank">
+                    <strong>+256 701 422 100</strong>
+                </a>
+            </div>
+        </div>
+
+        <p class="gold" style="margin-top: 30px;">Togetherness is Power! • Obumu Geemaanyi!</p>
+    </footer>
+
+    <script>
+        // Hamburger Menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', isOpen);
+            hamburger.textContent = isOpen ? '✕' : '☰';
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+                hamburger.textContent = '☰';
+            });
+        });
+
+        // Modal
+        function openModal(title, desc) {
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-desc').innerHTML = `<strong>Role Description:</strong><br><br>${desc}`;
+            document.getElementById('position-modal').style.display = 'flex';
+        }
+        function closeModal() {
+            document.getElementById('position-modal').style.display = 'none';
+        }
+
+        document.querySelectorAll('#position-list li').forEach(item => {
+            item.addEventListener('click', () => {
+                const title = item.getAttribute('data-title');
+                const desc = item.getAttribute('data-desc');
+                openModal(title, desc);
+            });
+        });
+
+        // Live Search
+        document.getElementById('search').addEventListener('keyup', function () {
+            const filter = this.value.toLowerCase().trim();
+            document.querySelectorAll('#position-list li').forEach(item => {
+                const text = (item.getAttribute('data-title') + ' ' + item.getAttribute('data-desc')).toLowerCase();
+                item.style.display = text.includes(filter) ? '' : 'none';
+            });
+        });
+
+        // Countdown
+        function startCountdown() {
+            const deadline = new Date("April 15, 2026 23:59:59").getTime();
+            const timerEl = document.getElementById("timer");
+            setInterval(() => {
+                const distance = deadline - new Date().getTime();
+                if (distance < 0) {
+                    timerEl.innerHTML = `<strong style="color:#ffd700;">Applications Closed!</strong>`;
+                    return;
+                }
+                const days = Math.floor(distance / (1000*60*60*24));
+                const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+                const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+                const seconds = Math.floor((distance % (1000*60)) / 1000);
+                timerEl.innerHTML = `<strong>${days}d ${hours}h ${minutes}m ${seconds}s</strong><br>until Application Deadline`;
+            }, 1000);
+        }
+        startCountdown();
+
+        // Scroll Animations
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.section').forEach(section => observer.observe(section));
+
+        // Close modal
+        window.addEventListener('click', e => { if (e.target.id === 'position-modal') closeModal(); });
+        document.addEventListener('keydown', e => { if (e.key === "Escape") closeModal(); });
+    </script>
+</body>
