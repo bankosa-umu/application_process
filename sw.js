@@ -1,8 +1,10 @@
 const CACHE_NAME = 'bankosa-pwa-v1';
+
 const urlsToCache = [
   './',
   './index.html',
-  'https://your-poster-image-url-here.jpg'   // replace with your poster URL
+  'https://your-poster-image-url-here.jpg',   // ← Change to your actual poster URL
+  'bankosa logo.jpg'                          // ← Change to your actual logo filename
 ];
 
 self.addEventListener('install', event => {
@@ -17,4 +19,4 @@ self.addEventListener('fetch', event => {
     caches.match(event.request)
       .then(response => response || fetch(event.request))
   );
-});s
+});
